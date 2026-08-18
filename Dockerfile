@@ -13,7 +13,6 @@ RUN apk add -U --no-cache ca-certificates \
 
 FROM alpine:latest
 WORKDIR /
-RUN chmod +x start.sh
 
 ENTRYPOINT ["./start.sh"]
 CMD ["../../etc/dns"]
