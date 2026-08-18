@@ -1,19 +1,18 @@
-# syntax=docker.io/docker/dockerfile:1
-
-FROM mcr.microsoft.com/dotnet/aspnet:10.0
-
-ADD --link https://packages.microsoft.com/config/ubuntu/24.04/packages-microsoft-prod.deb /
-RUN <<HEREDOC
-  dpkg -i packages-microsoft-prod.deb && rm packages-microsoft-prod.deb
-  
-  apt-get update && apt-get install -y libmsquic dnsutils iputils-ping
-  apt-get clean -y && rm -rf /var/lib/apt/lists/*
-
-  mkdir ../../etc/dns
-HEREDOC
-
+FROM alpine:latest AS build
 WORKDIR /
+RUN apk add -U --no-cache ca-certificates \
+    musl-dev \
+    build-base \
+    dotnet10-sdk \
+    aspnetcore10-runtime \
+    libmsquic \
+    git \
+    wget \
+    curl \
+    && mkdir ../../etc/dns
 
+FROM alpine:latest
+WORKDIR /
 RUN chmod +x start.sh
 
 ENTRYPOINT ["./start.sh"]
