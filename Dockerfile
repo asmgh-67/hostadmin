@@ -22,7 +22,8 @@ EXPOSE \
   5380/tcp 53443/tcp \
   67/udp
 
-LABEL org.opencontainers.image.title="DNS-67 ( Fork of Technitium DNS )"
-LABEL org.opencontainers.image.description="Private Homelab DNS Server"
-LABEL org.opencontainers.image.url="https://github.com/asmgh-67/hostadmin"
-LABEL org.opencontainers.image.licenses="MIT"
+LABEL org.opencontainers.image.title = "DNS-67 ( Fork of Technitium DNS )"
+LABEL org.opencontainers.image.source = "https://github.com/asmgh-67/hostadmin"
+LABEL org.opencontainers.image.description = "Private Homelab DNS Server"
+LABEL org.opencontainers.image.url = "https://github.com/asmgh-67/hostadmin"
+LABEL org.opencontainers.image.licenses = "MIT"
